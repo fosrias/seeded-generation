@@ -1,6 +1,6 @@
 # Extends functionality in the <%=file_name%> generator to create model
 # seeds files and directories.
-class SeedModelGenerator < Rails::Generator::NamedBase
+class SeedsForGenerator < Rails::Generator::NamedBase
    
   def manifest
     if !File.exist?(File.join(RAILS_ROOT, 'app/models', "#{file_path}.rb"))
