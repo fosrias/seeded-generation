@@ -1,0 +1,71 @@
+seeded-generation plugin by Mark W. Foster
+==========================================
+
+This plugin extends any model and scaffold generators to stub individual seeds
+files that correspond to a model and its module directory structure. It also
+overrides rake db:seed so that models can be individually seeded 
+using rake db:seed with the model name as an option. The plugin also includes 
+a generator that just stubs seeds files for existing models.
+
+The db/seeds.rb file is updated when models are generated to require the individual
+model seeds files so that rake db:seed executes all the required seed files. Extended
+model and scaffold generators include an option --skip-seeds that blocks stubbing
+a seeds file for the model and an option --seeds-only that only stubs a 
+seeds file for the model.
+
+Two default seeded generators are built as part of the install: 
+
+seeded_model and seeded_scaffold.
+
+Type script/generate seeded, script/generate seeds_for, script/seeded_model or
+script/seeded_scaffold for more usage information.
+
+Uninstalling the plugin leaves any extended generators and the db:seed
+override working. To clear all plugin functionality, refer to the 
+notes in the ../lib/seeded_generation folder after uninstalling the plugin.
+
+The plugin also installs functionality from the plugin OverrideRakeTask 
+by Eugene Bolshakov found at: git://github.com/eugene bolshakov/override_rake_task.git
+
+and an updated version of ActiveRecord::Base.create_or_update by Michael Bleigh 
+
+http://www.intridea.com/2008/2/19/activerecord-base-create_or_update-on-steroids-2?blog=company
+
+Example
+=======
+
+script/generate seeded my_model_generator
+
+creates a new seeded_my_model_generator generator that can then be used just like the 
+my_model_generator generator it is based on in the following fashion:
+
+script/generate seeded_my_model_generator MyModule::MyModel 
+
+creates generates all the standard model directories and stubs and includes
+the stub ../db/seeds/my_module/my_model_seeds.rb and adds 
+require 'my_module/my_model_seeds' to the db/seeds.rb file.
+
+script/generate seeded_my_model_generator MyModule::MyModel --skip-seeds 
+
+is just the base generator.
+
+script/generate seeded_my_model_generator MyModule::MyModel --only-seeds 
+
+only adds the file ../db/seeds/my_module/my_model_seeds.rb and adds 
+require 'my_module/my_model_seeds' to the db/seeds.rb file.
+
+This has the same functionality of the included generator seeds_for:
+
+script/generate seeds_for MyModule::MyModel
+
+which creates only a file db/seeds/my_module/my_model_seeds.rb and 
+adds a require statement to seeds.db.
+
+rake db:seed runs all seed files required in db/seeds.rb and 
+any other seed code there.
+
+rake db:seed MODELS=MyModule1::MyModel1, MyModule1::MyModel2 only loads seeds for the 
+specified models if they have corresponding seeds.rb files generated.
+
+Copyright (c) 2009 Mark W. Foster, released under the MIT license 
+fosterinfo[z]gmail.com (replace [z] with @)

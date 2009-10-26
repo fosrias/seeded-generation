@@ -1,0 +1,22 @@
+Description:
+    Extends an existing model or scaffold generator to stub out
+    an individual seeds file for its model and adds it as a 
+    required file in seeds.db. Pass the underscored generator 
+    name to be converted to a seeded generator.
+
+Examples:
+    `./script/generate seeded model`
+
+        creates a seeded_model generator.
+        
+    `./script/generate seeded scaffold`
+
+        creates a seeded_scaffold generator.
+
+    `./script/generate seeded my_model_generator`
+
+        creates a seeded_my_model_generator.
+        
+    `./script/generate seeded my_scaffold_generator`
+
+        creates a seeded_my_scaffold_generator.

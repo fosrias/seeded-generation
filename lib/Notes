@@ -1,0 +1,24 @@
+The plugin seeded-generation has been uninstalled. Functionality from 
+the plugin remains so that custom generators built by the plugin 
+will still work and you can still individually rake the seeds. 
+These generators will be found in the ../lib/generators/seeded_* 
+folders.
+
+To completely remove the functionality of this plugin, you must manually.
+1. Delete the folder ../lib/seeded_generation. It should only contain
+   the files override_rake_task.rb and Notes.
+   
+2. Delete the file ../lib/tasks/seeded_generation_task.rake."
+
+3. From the Rakefile, remove the line:
+
+      require 'seeded_generation/override_rake_task'" 
+
+4. The db/seeds path will remain in environment.rb as well as the
+   require statements in db/seeds.rb. 
+
+Custom generators will continue to work and db:seed will still update
+seeds. Only the ability to seed individual models will then be disabled.
+
+If custom generators in the ../lib/generators/seeded_* folders are no
+longer needed. You can delete them manually as well.

@@ -1,0 +1,14 @@
+Description:
+    Stubs out a model seeds file in the directory db/seeds and adds 
+    it as a required file in ../db/seeds.db. Pass the model name, 
+    either CamelCased or under_scored.
+
+Examples:
+    `./script/generate seed_model account`
+
+        creates an Account seeds file:
+            Seeds:      db/seeds/account_seeds.rb
+
+    `./script/generate model post title:string body:text published:boolean`
+
+        creates a post_seeds file.
