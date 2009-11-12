@@ -4,24 +4,34 @@
 # Examples (with ActiveRecord validation):
 #   
 #   Using controllers:
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   <%=class_name%>.create(:name => 'Daley', :city => cities.first)
+#   unless <%=class_name%>.find(:first)
+#     cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
+#     <%=class_name%>.create(:name => 'Daley', :city => cities.first)
+#   end
 #
 #   Using models:
-#   [ {:name => 'Bob',    :city => 'Seattle '},
-#     {:name => 'George', :city => 'Zurich'} ].each do |seed|  
-#     <%=class_name%>.create_or_update_by_name(seed)  
-#   end  
+#   unless <%=class_name%>.find(:first)
+#     [ {:name => 'Bob',    :city => 'Seattle '},
+#       {:name => 'George', :city => 'Zurich'} ].each do |seed|  
+#       <%=class_name%>.create(seed)  
+#     end  
+#   end
 #
-#   { 'employee' => ['Robert', 'Sales'],   
-#     'manager'  => ['Renee', 'Manufacturing'] }.each_pair do |key, val|  
-#     <%=class_name%>.create_or_update_by_key(:key => key, :name => val[0], :dept => val[1])  
-#   end 
+#   unless <%=class_name%>.find(:first)
+#     ["Bob, Shipping",
+#      "Sally, Sales"].each do |seed|
+#       val = seed.split(",")
+#       <%=class_name%>.create(:name => val[0], :dept => val[1])
+#     end
+#   end
 #
 #   Using comma delimited file with ActiveRecord validation:
-#   File.read(my_text_file).split("\n").each do |seed|
-#     val = seed.split(",")
-#     <%=class_name%>.create_or_update_by_name(:name => val[0], :dept => val[1])
+#
+#   unless <%=class_name%>.find(:first)
+#     File.read(my_text_file).split("\n").each do |seed|
+#       val = seed.split(",")
+#       <%=class_name%>.create(:name => val[0], :dept => val[1])
+#     end
 #   end
 #
 # To seed this model individually, run rake db:seed MODELS=<%=class_name%>

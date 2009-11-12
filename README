@@ -27,10 +27,6 @@ notes in the ../lib/seeded_generation folder after uninstalling the plugin.
 The plugin also installs functionality from the plugin OverrideRakeTask 
 by Eugene Bolshakov found at: git://github.com/eugene bolshakov/override_rake_task.git
 
-and an updated version of ActiveRecord::Base.create_or_update by Michael Bleigh 
-
-http://www.intridea.com/2008/2/19/activerecord-base-create_or_update-on-steroids-2?blog=company
-
 Example
 =======
 
