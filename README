@@ -6,7 +6,7 @@ files that correspond to a model and its module directory structure. It also
 overrides rake db:seed so that models can be individually seeded 
 using rake db:seed with the model name as an option. The plugin also includes 
 a generator that just stubs seeds files for existing models. Finally, the 
-plugin automatically seeds the test database when test are run.
+plugin automatically seeds the test database when tests are run.
 
 
 The db/seeds.rb file is updated when models are generated to require the individual
@@ -28,6 +28,8 @@ notes in the ../lib/seeded_generation folder after uninstalling the plugin.
 
 The plugin also installs functionality adapted from the plugin OverrideRakeTask 
 by Eugene Bolshakov found at: git://github.com/eugene bolshakov/override_rake_task.git
+
+as forked to allow aliasing tasks at: git://github.com/markwfoster/override_rake_task.git
 
 Example
 =======
