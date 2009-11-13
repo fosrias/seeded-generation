@@ -5,7 +5,9 @@ This plugin extends any model and scaffold generators to stub individual seeds
 files that correspond to a model and its module directory structure. It also
 overrides rake db:seed so that models can be individually seeded 
 using rake db:seed with the model name as an option. The plugin also includes 
-a generator that just stubs seeds files for existing models.
+a generator that just stubs seeds files for existing models. Finally, the 
+plugin automatically seeds the test database when test are run.
+
 
 The db/seeds.rb file is updated when models are generated to require the individual
 model seeds files so that rake db:seed executes all the required seed files. Extended
@@ -24,7 +26,7 @@ Uninstalling the plugin leaves any extended generators and the db:seed
 override working. To clear all plugin functionality, refer to the 
 notes in the ../lib/seeded_generation folder after uninstalling the plugin.
 
-The plugin also installs functionality from the plugin OverrideRakeTask 
+The plugin also installs functionality adapted from the plugin OverrideRakeTask 
 by Eugene Bolshakov found at: git://github.com/eugene bolshakov/override_rake_task.git
 
 Example
